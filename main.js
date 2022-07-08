@@ -33,7 +33,15 @@ $(document).ready(function() {
         }
     });
 
-    btnNext.click(function() {
+    btnNext.click(nextSlide);
+
+    const setPosition = () => {
+        track.css({
+            transform: `translateX(${position}px)`
+        });
+    };
+  
+    function nextSlide() {
         i++;
         if (i <= (elemCount-1)){
             position -= movePosition;
@@ -43,13 +51,8 @@ $(document).ready(function() {
             position = 0;
             setPosition();
         }
-    });
-
-    const setPosition = () => {
-        track.css({
-            transform: `translateX(${position}px)`
-        });
     };
-  
+
+    setInterval(nextSlide, 2500);
  
 });
